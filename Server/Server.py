@@ -17,13 +17,21 @@ from Command import COMMAND as cmd
 
 class Server:
     def __init__(self):
+        print("Initializing Server")
         self.tcp_flag=False
+        print("Load LED module")
         self.led=Led()
+        print("Load ADC Module")
         self.adc=ADC()
+        print("Load Servo Module")
         self.servo=Servo()
+        print("Load Buzzer Module")
         self.buzzer=Buzzer()
+        print("Load Control Module")
         self.control=Control()
+        print("Load Ultrasonic Module")
         self.sonic=Ultrasonic()
+        print("All Modules loaded")
         self.control.Thread_conditiona.start()
     def get_interface_ip(self):
         s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)

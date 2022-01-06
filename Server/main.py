@@ -11,6 +11,7 @@ from Control import *
 
 class MyWindow(QMainWindow,Ui_server):
     def __init__(self):
+        print("Beginning init of Window")
         self.user_ui=True
         self.start_tcp=False
         self.server=Server()
