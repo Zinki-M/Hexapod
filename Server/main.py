@@ -81,6 +81,7 @@ class MyWindow(QMainWindow,Ui_server):
         os._exit(0)
         
 if __name__ == '__main__':
+    print("Beginning main")
     myshow=MyWindow()
     if myshow.user_ui==True:
         myshow.show();  
