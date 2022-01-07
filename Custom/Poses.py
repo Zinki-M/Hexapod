@@ -22,3 +22,4 @@ def curledPosition():
 
 if __name__ == '__main__':
     zeroPosition()
+    curledPosition()
