@@ -52,6 +52,6 @@ class ADS7830(ADCDevice):
         try:
             value = self.bus.read_byte_data(self.address, self.cmd|(((chn<<2 | chn>>1)&0x07)<<4))
         except:
-            print("Exception in analogRead with " + chn)
+            print("Exception in analogRead with " + str(chn))
             value = 0
         return value
