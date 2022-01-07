@@ -1,6 +1,6 @@
 from os import sys, path
-sys.path.append(path.dirname(path.dirname(path.abspath(__file__))))
-from Server import Servo
+sys.path.append(path.join(path.dirname(path.dirname(path.abspath(__file__))),"Server"))
+import Servo
 
 
 def zeroPosition():
