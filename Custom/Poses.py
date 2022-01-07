@@ -8,7 +8,7 @@ def zeroPosition():
 
 
 def curledPosition():
-    S=Servo()     
+    S=Servo.Servo()     
     for i in range(32):
         if (i == 10 or i == 13 or i == 31):
             S.setServoAngle(i,45)
