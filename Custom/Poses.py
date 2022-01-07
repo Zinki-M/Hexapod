@@ -82,13 +82,30 @@ def tipToes():
             servo.setServoAngle(21,180-i)
             servo.setServoAngle(27,180-i)
             time.sleep(0.005)
-        for i in range(90):
-            servo.setServoAngle(0,90-i)
-            time.sleep(0.005)
        
     except KeyboardInterrupt:
         print ("\ninterrrupted")
     time.sleep(1)
+
+def jump():
+    servo=Servo.Servo()
+    print("Preparing jump")
+    standingPosition()
+    print("Jumping in 3")
+    time.sleep(1)
+    print("Jumping in 2")
+    time.sleep(1)
+    print("Jumping in 1")
+    time.sleep(1)
+    print("Jumping")
+    servo.setServoAngle(13,90)
+    servo.setServoAngle(10,90)
+    servo.setServoAngle(31,90)
+    servo.setServoAngle(18,180-90)
+    servo.setServoAngle(21,180-90)
+    servo.setServoAngle(27,180-90)
+    time.sleep(1)
+
 
 def standingPosition():
     print("Standing up")
@@ -128,3 +145,4 @@ if __name__ == '__main__':
     standingPosition()
     zeroPosition()
     tipToes()
+    jump()
