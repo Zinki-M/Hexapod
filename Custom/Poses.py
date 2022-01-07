@@ -1,7 +1,7 @@
 from os import sys, path
 sys.path.append(path.join(path.dirname(path.dirname(path.abspath(__file__))),"Server"))
 import Servo
-
+import time
 
 def zeroPosition():
     S=Servo.Servo()     
