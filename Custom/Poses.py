@@ -16,40 +16,40 @@ def zeroPosition():
     time.sleep(1)
 
 
-def curledPosition():
-    print("curling up")
-    servo=Servo.Servo()
-    maxKnee = 0
-    maxTip = 90
-    try:
+# def curledPosition():
+#     print("curling up")
+#     servo=Servo.Servo()
+#     maxKnee = 0
+#     maxTip = 90
+#     try:
         
-        servo.setServoAngle(15,90)
-        servo.setServoAngle(12,90)
-        servo.setServoAngle(9, 90)
-        servo.setServoAngle(16,90)
-        servo.setServoAngle(19,90)
-        servo.setServoAngle(22,90)
-        time.sleep(1)
+#         servo.setServoAngle(15,90)
+#         servo.setServoAngle(12,90)
+#         servo.setServoAngle(9, 90)
+#         servo.setServoAngle(16,90)
+#         servo.setServoAngle(19,90)
+#         servo.setServoAngle(22,90)
+#         time.sleep(1)
 
-        for i in range(maxKnee):
-            servo.setServoAngle(14,90-i)
-            servo.setServoAngle(11,90-i)
-            servo.setServoAngle(8,90-i)
-            servo.setServoAngle(17,90+i)
-            servo.setServoAngle(20,90+i)
-            servo.setServoAngle(23,90+i)
-            time.sleep(0.005)
-        for i in range(maxTip):
-            servo.setServoAngle(13,-i)
-            servo.setServoAngle(10,-i)
-            servo.setServoAngle(31,-i)
-            servo.setServoAngle(18,180+i)
-            servo.setServoAngle(21,180+i)
-            servo.setServoAngle(27,180+i)
-            time.sleep(0.005)      
-    except KeyboardInterrupt:
-        print ("\ninterrrupted")
-    time.sleep(1)
+#         for i in range(maxKnee):
+#             servo.setServoAngle(14,90-i)
+#             servo.setServoAngle(11,90-i)
+#             servo.setServoAngle(8,90-i)
+#             servo.setServoAngle(17,90+i)
+#             servo.setServoAngle(20,90+i)
+#             servo.setServoAngle(23,90+i)
+#             time.sleep(0.005)
+#         for i in range(maxTip):
+#             servo.setServoAngle(13,-i)
+#             servo.setServoAngle(10,-i)
+#             servo.setServoAngle(31,-i)
+#             servo.setServoAngle(18,180+i)
+#             servo.setServoAngle(21,180+i)
+#             servo.setServoAngle(27,180+i)
+#             time.sleep(0.005)      
+#     except KeyboardInterrupt:
+#         print ("\ninterrrupted")
+#     time.sleep(1)
 
 def tipToes():
     print("Standing on tiptoes")
@@ -81,6 +81,9 @@ def tipToes():
             servo.setServoAngle(18,180-i)
             servo.setServoAngle(21,180-i)
             servo.setServoAngle(27,180-i)
+            time.sleep(0.005)
+        for i in range(90):
+            servo.setServoAngle(0,90-i)
             time.sleep(0.005)
        
     except KeyboardInterrupt:
@@ -125,5 +128,3 @@ if __name__ == '__main__':
     standingPosition()
     zeroPosition()
     tipToes()
-    zeroPosition()
-    curledPosition()
