@@ -90,7 +90,7 @@ def tipToes():
 def jump():
     servo=Servo.Servo()
     print("Preparing jump")
-    standingPosition()
+    zeroPosition()
     print("Jumping in 3")
     time.sleep(1)
     print("Jumping in 2")
