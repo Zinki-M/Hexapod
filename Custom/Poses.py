@@ -80,6 +80,10 @@ def tipToes():
             servo.setServoAngle(21,180-i)
             servo.setServoAngle(27,180-i)
             time.sleep(0.005)
+        for i in range(90):
+            servo.setServoAngle(0,90-i)
+            time.sleep(0.005)
+            
         time.sleep(1)
        
     except KeyboardInterrupt:
