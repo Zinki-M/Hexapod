@@ -81,7 +81,7 @@ def tipToes():
             servo.setServoAngle(27,180-i)
             time.sleep(0.005)
         time.sleep(1)
-
+        print("reversing tiptoes")
         #reverse
         for i in range(maxTip):
             servo.setServoAngle(13,maxTip-i)
@@ -92,12 +92,12 @@ def tipToes():
             servo.setServoAngle(27,maxTip-(180-i))
             time.sleep(0.005)
         for i in range(maxKnee):
-            servo.setServoAngle(14,maxKnee-(90+i))
-            servo.setServoAngle(11,maxKnee-(90+i))
-            servo.setServoAngle(8,maxKnee-(90+i))
-            servo.setServoAngle(17,maxKnee-(90-i))
-            servo.setServoAngle(20,maxKnee-(90-i))
-            servo.setServoAngle(23,maxKnee-(90-i))
+            servo.setServoAngle(14,90-(maxKnee-i))
+            servo.setServoAngle(11,90-(maxKnee-i))
+            servo.setServoAngle(8,90-(maxKnee-i))
+            servo.setServoAngle(17,90+(maxKnee+i))
+            servo.setServoAngle(20,90+(maxKnee+i))
+            servo.setServoAngle(23,90+(maxKnee+i))
             time.sleep(0.005)
     except KeyboardInterrupt:
         print ("\ninterrrupted")
