@@ -37,7 +37,7 @@ def curledPosition():
             servo.setServoAngle(20,90-i)
             servo.setServoAngle(23,90-i)
             time.sleep(0.005)
-        for i in range(120):
+        for i in range(180):
             servo.setServoAngle(13,180-i)
             servo.setServoAngle(10,180-i)
             servo.setServoAngle(31,180-i)
