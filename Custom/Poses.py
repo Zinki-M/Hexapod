@@ -52,8 +52,8 @@ def zeroPosition():
 def tipToes():
     print("Standing on tiptoes")
     servo=Servo.Servo()
-    maxKnee = 60
-    maxTip = 120
+    maxKnee = 90
+    maxTip = 180
     try:
         
         servo.setServoAngle(15,90)
