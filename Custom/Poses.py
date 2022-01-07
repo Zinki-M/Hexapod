@@ -87,17 +87,11 @@ def tipToes():
         print ("\ninterrrupted")
     time.sleep(1)
 
-def jump():
+def jumpUp():
     servo=Servo.Servo()
     print("Preparing jump")
     zeroPosition()
-    print("Jumping in 3")
-    time.sleep(1)
-    print("Jumping in 2")
-    time.sleep(1)
-    print("Jumping in 1")
-    time.sleep(1)
-    print("Jumping")
+    print("Jumping up")
     servo.setServoAngle(14,90)
     servo.setServoAngle(11,90)
     servo.setServoAngle(8,90)
@@ -151,4 +145,4 @@ if __name__ == '__main__':
     standingPosition()
     zeroPosition()
     tipToes()
-    jump()
+    jumpUp()
