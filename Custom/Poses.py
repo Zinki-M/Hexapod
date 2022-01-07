@@ -38,12 +38,12 @@ def curledPosition():
             servo.setServoAngle(23,90-i)
             time.sleep(0.005)
         for i in range(180):
-            servo.setServoAngle(13,180-i)
-            servo.setServoAngle(10,180-i)
-            servo.setServoAngle(31,180-i)
-            servo.setServoAngle(18,i)
-            servo.setServoAngle(21,i)
-            servo.setServoAngle(27,i)
+            servo.setServoAngle(13,-i)
+            servo.setServoAngle(10,-i)
+            servo.setServoAngle(31,-i)
+            servo.setServoAngle(18,180+i)
+            servo.setServoAngle(21,180+i)
+            servo.setServoAngle(27,180+i)
             time.sleep(0.005)
     except KeyboardInterrupt:
         print ("\ninterrrupted")
