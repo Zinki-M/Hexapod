@@ -52,8 +52,8 @@ def zeroPosition():
 def tipToes():
     print("Standing on tiptoes")
     servo=Servo.Servo()
-    maxKnee = 90
-    maxTip = 180
+    maxKnee = 60
+    maxTip = 120
     try:
         
         servo.setServoAngle(15,90)
@@ -65,12 +65,12 @@ def tipToes():
         time.sleep(1)
 
         for i in range(maxKnee):
-            servo.setServoAngle(14,90+i)
-            servo.setServoAngle(11,90+i)
-            servo.setServoAngle(8,90+i)
-            servo.setServoAngle(17,90-i)
-            servo.setServoAngle(20,90-i)
-            servo.setServoAngle(23,90-i)
+            servo.setServoAngle(14,90-i)
+            servo.setServoAngle(11,90-i)
+            servo.setServoAngle(8,90-i)
+            servo.setServoAngle(17,90+i)
+            servo.setServoAngle(20,90+i)
+            servo.setServoAngle(23,90+i)
             time.sleep(0.005)
         for i in range(maxTip):
             servo.setServoAngle(13,i)
