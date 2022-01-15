@@ -12,7 +12,7 @@ import Control
 #Action Mode : '0'   Angleless turn 
 
 def turnAround():
-    control = Control()
+    control = Control.Control()
     data = ['CMD_MOVE', "1", "0", "25", "10", "1"]
     control.run(data)
 
