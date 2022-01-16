@@ -14,7 +14,8 @@ import Control
 def turnAround():
     control = Control.Control()
     data = ['CMD_MOVE', "1", "0", "25", "10", "1"]
-    control.run(data)
+    for i in range(10):
+        control.run(data)
 
 
 def makeMoveData():
