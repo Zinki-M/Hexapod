@@ -13,7 +13,7 @@ import Control
 
 def turnAround():
     control = Control.Control()
-    data = ['CMD_MOVE', "1", "35", "0", "10", "1"]
+    data = ['CMD_MOVE', "1", "25", "0", "10", "1"]
     for i in range(10):
         control.run(data)
 
