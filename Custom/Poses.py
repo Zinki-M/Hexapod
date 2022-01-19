@@ -88,24 +88,27 @@ def tipToes():
     time.sleep(1)
 
 def jumpUp():
-    servo=Servo.Servo()
     print("Preparing jump")
     zeroPosition()
     print("Jumping up")
-    servo.setServoAngle(14,90)
-    servo.setServoAngle(11,90)
-    servo.setServoAngle(8,90)
-    servo.setServoAngle(17,90)
-    servo.setServoAngle(20,90)
-    servo.setServoAngle(23,90)
-    servo.setServoAngle(13,90)
-    servo.setServoAngle(10,90)
-    servo.setServoAngle(31,90)
-    servo.setServoAngle(18,90)
-    servo.setServoAngle(21,90)
-    servo.setServoAngle(27,90)
+    stand()
     time.sleep(1)
 
+def stand():
+    servo=Servo.Servo()
+
+    servo.setServoAngle(14,150)
+    servo.setServoAngle(11,150)
+    servo.setServoAngle(8,150)
+    servo.setServoAngle(17,30)
+    servo.setServoAngle(20,30)
+    servo.setServoAngle(23,30)
+    servo.setServoAngle(13,120)
+    servo.setServoAngle(10,120)
+    servo.setServoAngle(31,120)
+    servo.setServoAngle(18,60)
+    servo.setServoAngle(21,60)
+    servo.setServoAngle(27,60)
 
 def standingPosition():
     print("Standing up")

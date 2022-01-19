@@ -24,9 +24,15 @@ STEPDISTANCE = 10
 NORTH = [0,35]
 SOUTH = [0,-35]
 EAST = [35,0]
-WEST = [0,35]
+WEST = [-35,0]
 
 currentAngle = 0
+currentPosition = [0,0]
+
+sweepList = []
+
+threadLock = threading.Lock()
+
 
 def turn(degrees):
     """turn given degrees"""
@@ -40,7 +46,8 @@ def turn(degrees):
     print("Running",commandsToRun,"turn commands at strength",turnStrength)
     for i in range(commandsToRun):
         control.run(data)
-    currentAngle += degrees
+    global currentAngle
+    currentAngle = (currentAngle + degrees) % 360
 
 def turnTo(absDegrees):
     """turn to absolute degrees from current position"""
@@ -53,6 +60,9 @@ def batteryPrint():
         print("Battery:", adc.batteryPower())
         time.sleep(10)
 
+def point_pos(x0, y0, d, theta):
+    theta_rad = math.pi/2 - math.radians(theta)
+    return x0 + d*math.cos(theta_rad), y0 + d*math.sin(theta_rad)
 
 def walk(distance, direction=NORTH):
     """walk a distance in cm"""
@@ -70,20 +80,30 @@ def walk(distance, direction=NORTH):
     if remainder > 0:
         multiplier = STEPDISTANCE/remainder
         data = ['CMD_MOVE', "1", str(math.floor(direction[0]*multiplier)), str(math.floor(direction[1]*multiplier)), "10", "0"]
+    global currentPosition
+    angle = currentAngle
+    if direction[0] != 0 or direction[1] != 35:
+        print("Direction is not NORTH, currentPosition update will be broken (FIX THIS!)")
+    currentPosition[0], currentPosition[1] = point_pos(currentPosition[0], currentPosition[1], distance, angle)
+    
 
 def sweep(low = 0, high = 180):
     """sweep head"""
     servo = Servo.Servo()
     us = Ultrasonic.Ultrasonic()
 
-    servo.setServoAngle(0,90)
+    servo.setServoAngle(0,120)
     distanceSweep = []
     for angle in range(high, low, -1):
         servo.setServoAngle(1,angle)
-        distance = us.getDistance()
+        distance = us.getDistance(10)
         distanceSweep.append(distance)
         time.sleep(0.01)
     servo.setServoAngle(1,90)
+    threadLock.acquire()
+    global sweepList
+    sweepList.append(((currentPosition[0], currentPosition[1]), currentAngle, distanceSweep))
+    threadLock.release()
     return distanceSweep
 
 def fullSweep():
@@ -136,11 +156,40 @@ def walkToFarthestThing():
             walk(walkDist)
     
 
-RUNNING = True
-def run():
+def runBatteryTracker():
     x = threading.Thread(target=batteryPrint)
     x.start()
-    walkToFarthestThing()
 
-run()
-RUNNING = False
+def runSweepStore():
+    x = threading.Thread(target=trackSweeps)
+    x.start()
+
+def runThreads():
+    runBatteryTracker()
+    runSweepStore()
+
+def trackSweeps():
+    while RUNNING:
+        threadLock.acquire()
+        with open("sweeps.txt", "w") as fily:
+            fily.write(str(sweepList)+"\n")
+            print("Stored sweep data")
+        threadLock.release()
+        time.sleep(15)
+
+def storeSweep(turns,turnAngle, sweepMin=0, sweepMax=180):
+    angle = 0
+    distances = {}
+    for i in range(turns):
+        distances[angle] = sweep(sweepMin, sweepMax)
+        turn(turnAngle)
+        angle += turnAngle
+    print(distances)   
+
+
+if __name__ == "__main__":
+    RUNNING = True
+    runThreads()
+    walkToFarthestThing()
+    #storeSweep(8,45,45,135)
+    RUNNING = False
