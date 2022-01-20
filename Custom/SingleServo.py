@@ -6,6 +6,7 @@ from sys import argv
 
 
 servo = Servo.Servo()
-Poses.stand()
 if len(argv) > 2:
     servo.setServoAngle(int(argv[1]),int(argv[2]))
+else:
+    Poses.pointFingers()

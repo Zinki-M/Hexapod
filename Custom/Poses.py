@@ -2,6 +2,7 @@ from os import sys, path
 sys.path.append(path.join(path.dirname(path.dirname(path.abspath(__file__))),"Server"))
 import Servo
 import time
+from Constants import *
 
 def zeroPosition():
     print("zero Position")
@@ -109,6 +110,35 @@ def stand():
     servo.setServoAngle(18,60)
     servo.setServoAngle(21,60)
     servo.setServoAngle(27,60)
+
+def pointFingers():
+    servo=Servo.Servo()
+    #move head out of the way
+    servo.setServoAngle(HEAD_V,180)
+
+    #position fingers
+    servo.setServoAngle(FRONT_LEFT_KNEE,120)
+    servo.setServoAngle(FRONT_LEFT_TIP,90)
+    servo.setServoAngle(FRONT_LEFT_HIP,45)
+    servo.setServoAngle(FRONT_RIGHT_KNEE,0)
+    servo.setServoAngle(FRONT_RIGHT_TIP,90)
+    servo.setServoAngle(FRONT_RIGHT_HIP,160)
+
+
+    #position back Hips for stability
+    servo.setServoAngle(CENTER_LEFT_HIP,60)
+    servo.setServoAngle(CENTER_RIGHT_HIP,120)
+    servo.setServoAngle(BACK_LEFT_HIP,60)
+    servo.setServoAngle(BACK_RIGHT_HIP,120)
+    #position legs
+    servo.setServoAngle(CENTER_LEFT_KNEE,90)
+    servo.setServoAngle(BACK_LEFT_KNEE,120)
+    servo.setServoAngle(CENTER_RIGHT_KNEE,90)
+    servo.setServoAngle(BACK_RIGHT_KNEE,60)
+    servo.setServoAngle(CENTER_LEFT_TIP,120)
+    servo.setServoAngle(BACK_LEFT_TIP,120)
+    servo.setServoAngle(CENTER_RIGHT_TIP,60)
+    servo.setServoAngle(BACK_RIGHT_TIP,60)
 
 def standingPosition():
     print("Standing up")
